@@ -2,7 +2,6 @@ import { Body, Controller, Delete, Get, Param, Post, Version } from '@nestjs/com
 import { LinkService } from './link.service';
 import { RequestCreateLink } from './dto';
 import { Authorized } from 'src/common/decorators/authorized.decorator';
-import { User } from '@prisma/client';
 import { Authorize } from 'src/common/decorators/authorization.decorator';
 
 @Authorize()
