@@ -1,8 +1,8 @@
 import { Body, Controller, Delete, Get, Param, Post, Version } from '@nestjs/common';
 import { LinkService } from './link.service';
 import { RequestCreateLink } from './dto';
-import { Authorized } from 'src/common/decorators/authorized.decorator';
-import { Authorize } from 'src/common/decorators/authorization.decorator';
+import { Authorized } from '../../common/decorators/authorized.decorator';
+import { Authorize } from '../../common/decorators/authorization.decorator';
 
 @Authorize()
 @Controller({
