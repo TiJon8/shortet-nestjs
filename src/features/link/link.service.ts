@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { randomBytes } from 'crypto';
-import { PrismaService } from 'src/infra/prisma/prisma.service';
+import { PrismaService } from '../../infra/prisma/prisma.service'; // path for jest
 
 @Injectable()
 export class LinkService {
