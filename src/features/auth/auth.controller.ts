@@ -3,9 +3,9 @@ import { AuthService } from './auth.service';
 import { RequestRegister } from './dto/register.dto';
 import { LoginRequest } from './dto/login.dto';
 import { Request, Response } from 'express';
-import { Authorize } from 'src/common/decorators/authorization.decorator';
+import { Authorize } from '../../common/decorators/authorization.decorator';
 import { User } from '@prisma/client';
-import { Authorized } from 'src/common/decorators/authorized.decorator';
+import { Authorized } from '../../common/decorators/authorized.decorator';
 
 @Controller('auth')
 export class AuthController {

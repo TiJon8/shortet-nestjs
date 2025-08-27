@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { lookup } from 'geoip-country';
-import { PrismaService } from 'src/infra/prisma/prisma.service';
+import { PrismaService } from '../../infra/prisma/prisma.service';
 import { UAParser } from 'ua-parser-js';
 
 

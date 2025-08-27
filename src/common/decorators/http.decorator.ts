@@ -3,7 +3,7 @@ import { Request } from "express";
 
 const IS_DEV_ENV = process.env['NODE_ENV'] === 'DEVELOPMENT'
 
-console.log(process.env)
+// console.log(process.env)
 
 export const UserAgent = createParamDecorator(
 	(_: string, ctx: ExecutionContext) => {

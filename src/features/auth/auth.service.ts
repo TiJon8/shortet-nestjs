@@ -8,7 +8,7 @@ import { LoginRequest } from './dto/login.dto';
 import { Request, Response } from 'express';
 import { isDev } from '../../common/utils/node.env';
 import { User } from '@prisma/client';
-import { PrismaService } from 'src/infra/prisma/prisma.service';
+import { PrismaService } from '../../infra/prisma/prisma.service';
 
 type FindUniqueArgs =
 	| { email: string; id?: never }
