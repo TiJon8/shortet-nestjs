@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ExecutionContext, INestApplication, ValidationPipe } from '@nestjs/common';
+import { ExecutionContext, INestApplication, NotFoundException, ValidationPipe } from '@nestjs/common';
 import * as request from 'supertest';
 import { App } from 'supertest/types';
 import { AppModule } from './../src/app.module';
@@ -49,12 +49,24 @@ describe('AppController (e2e)', () => {
 
 		// если у тебя auth возвращает json с токеном
 		token = res.body.accessToken;
+		expect(res.body).toHaveProperty('accessToken')
 
 		// или если в куке
 		// const cookie = res.headers['set-cookie'][0];
 	});
 
-	it('/ (POST)', async () => {
+	it('/auth/login (POST) → должна вернуться ошибка', async () => {
+		const res = await request(app.getHttpServer())
+			.post('/auth/login')
+			.send({ email: 'my@mail.ru', password: 'hello_world1' })
+			.expect(404);
+
+		expect(res.statusCode).toBe(404)
+		expect(new NotFoundException(res.body)).toBeInstanceOf(NotFoundException)
+
+	});
+
+	it('/link (POST)', async () => {
 		const response = await request(app.getHttpServer())
 			.post('/link')
 			.set('Authorization', `Bearer ${token}`)
@@ -63,4 +75,14 @@ describe('AppController (e2e)', () => {
 
 		expect(response.body).toHaveProperty('url')
 	});
+
+	// проверенный тест
+	// it('/link:id (DELETE)', async () => {
+	// 	const response = await request(app.getHttpServer())
+	// 		.delete(`/link/${'e530c70a-e7c2-448e-b6b1-d2c835734031'}`)
+	// 		.set('Authorization', `Bearer ${token}`)
+	// 		.expect(200)
+
+	// 	expect(response.body).toBeTruthy()
+	// });
 });

@@ -61,4 +61,6 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 /uploads/*
 # !/uploads/.gitkeep
 # **/test/
+/test/app.*.ts
+secret.js
 bun.*
